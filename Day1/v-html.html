@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <!--插值表达式不具备解析标签的功能-->
+        <div>{{ url }}</div>
+        <!-- 使用v-html可以跳转标签 -->
+        <div v-html="url"></div>
+
+    </div>
+</body>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            url:`<a href="www.baidu.com">百度</a>`,
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+  </head>
+  <!-- {{ }} 插值表达式 关键字(if for...)不能往插值表达式里面放 -->
+  <body>
+    <div id="app">
+      <h1>{{ msg }}</h1>
+      <p>usrname={{ user.username }}</p>
+      <p>{{age > 18 ? '成年' : '未成年人'}}</p>
+    </div>
+  </body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    // 通过el配置选择器，指定 Vue所管理的是哪个盒子
+    el: "#app",
+    // 通过data提供渲染数据
+    data: {
+      msg: "Hello Vue!",
+      age: '19',
+      user: {
+        username: "admin",
+        password: "admin",
+        // 修改数据: 实例.属性 = 新值
+        change: "change"
+      }
+    },
+  });
+</script>

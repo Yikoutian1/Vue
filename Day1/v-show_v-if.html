@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            margin: 30px;
+            margin-left: 300px;
+            margin-right: 300px;
+            padding: 0%;
+            border-width: 30px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px #ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<!-- 
+        v-show
+    作用:控制元素显示隐藏
+    语法:v-show="表达式" 表达式值true显示,false隐藏
+    原理:切换 css 的 display : none 来控制显示
+    使用场景:需要频繁切换显示隐藏的场景,例如加载显示我们用户的购物车列表
+
+        v-if
+    作用:控制元素显示隐藏(条件渲染)
+    语法:v-if="表达式" 表达式值true显示,false隐藏
+    原理:根据条件判断 控制元素的 创建 和 移除(条件渲染)
+    使用场景:要么显示,要么隐藏,不频繁切换的场景
+ -->
+<body>
+    <div id="app">
+        <!-- 通过css隐藏的 -->
+        <div v-show="flag" class="box">v-show控制</div>    
+        <div v-if="flag" class="box">v-if控制</div>
+    </div>
+</body>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            flag: false
+        }
+    })
+</script>
+</html>
