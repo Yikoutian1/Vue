@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+  <body>
+    <div id="app">
+      <!-- 
+              动态渲染图片 
+            v-bind:src="url" 
+            v-bind:Xxx="xxx"
+            完整写法
+            <img v-bind:src="imgUrl" v-bind:title="msg">
+         -->
+      <!-- 
+            简写 
+        -->
+        <!-- 动态设置图片index -->
+      <img :src="imgUrl[index]" :title="msg" style="height: 200px;width: 200px;"/>
+      <hr />
+      <br />
+      <button v-show="index &gt; 0" @click="index--">上一张</button>
+      <button v-show="index &lt; 3" @click="index++">下一张</button>
+    </div>
+  </body>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        index: 1,
+        imgUrl: [
+          "./images/1.jpg",
+          "./images/2.jpg",
+          "./images/3.jpg",
+          "./images/4.jpg",
+        ],
+        msg: "这是一种照片的名字渲染",
+      },
+    });
+  </script>
+</html>

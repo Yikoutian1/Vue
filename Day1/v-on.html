@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+  <body>
+    <div id="app">
+      <br><br><br>
+      <!-- v-on： 注册事件，只需要将：后面的改成其他事件即可 -->
+      <button v-on:click="sub(1)">-</button>
+      <span>{{ count }}</span>
+      <!-- 其中 v-on： 可以简写为@ 例如v-on:click  @click  -->
+      <button @click="add(1)">+</button><hr>
+      <br><br><br>
+      <button @click="changeShow()">切换显示文字</button>
+      <h1 v-show="isShow">文字区域</h1><hr>
+      <h1>售货机</h1>
+      <button @click="sub(3)">可乐3元</button>
+      <button @click="sub(10)">冰淇淋10元</button>
+      <h2>你有：{{ count }} 元</h2>
+    </div>
+  </body>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        count: 100,
+        isShow: true
+      },
+      methods: {
+        sub(number) {
+          this.count -= number;
+        },
+        add(number) {
+          this.count += number;
+        },
+        changeShow(){
+            this.isShow = !this.isShow;
+        },
+      },
+    });
+  </script>
+</html>
