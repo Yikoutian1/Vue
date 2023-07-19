@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>书架</h1>
+      <ul>
+        <!-- v-for="item in List" -->
+        <!-- 
+            v-for 中的key
+            key:唯一标识,便于Vue进行列表项的正确排序复用
+         -->
+        <li v-for="item in booksList" :key="item.id">
+          <span>{{ item.name }}</span>
+          <span>{{ item.author }}</span>
+          <!-- 注册点击事件 通过id删除对应数组元素 -->
+          <button @click="romoveById(item.id)">删除</button>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      booksList: [
+        { id: 1, name: "《红楼梦》", author: "曹雪芹" },
+        { id: 2, name: "《西游记》", author: "吴承恩" },
+        { id: 3, name: "《水浒传》", author: "施耐庵" },
+        { id: 4, name: "《三国演义》", author: "罗贯中" },
+      ],
+    },
+    methods: {
+      romoveById(id) {
+        // 通过 id 对数组进行删除 删除的是filter
+        // filter: 根据条件,保留满足条件的对应项,得到一个新的数组,
+        // 然后再赋值给原数组
+        this.booksList = this.booksList.filter(item => item.id !== id);
+      },
+    },
+  });
+</script>
