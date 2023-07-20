@@ -34,7 +34,7 @@
 <body>
 
   <div id="app">
-    <h3>小黑的礼物清单🛒<span>?</span></h3>
+    <h3>小黑的礼物清单🛒<span>{{ this.totalCount }}</span></h3>
     <table>
       <tr>
         <th>名字</th>
@@ -46,7 +46,7 @@
       </tr>
     </table>
 
-    <p>礼物总数：{{ totalCount }} 个</p>
+    <p>礼物总数：{{ this.totalCount }} 个</p>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
   <script>
@@ -60,8 +60,21 @@
           { id: 3, name: '铅笔', num: 5 },
         ]
       },
+      // 给实例提供一个 方法 ,提供处理 业务 逻辑
+      // 作为方法,需要调用,this.方法名()  {{ 方法名() }} @事件名="方法名"
+      methods: {
+        // 性能没有计算属性的好,封装数据用computed
+        // methodsCount(){
+        //   console.log("方法执行了")
+        //   let total = this.list.reduce((sum, item) => sum + item.num, 0)
+        //   return total
+        // }
+      },
+      // 封装了一段对于 数据 的处理,求得一个结果
+      // 作为属性,直接使用 this.计算属性 {{ 计算属性 }}   有缓存存取
       computed: {
         totalCount () {
+          console.log("计算属性执行了")
           let total = this.list.reduce((sum, item) => sum + item.num, 0)
           return total
         }

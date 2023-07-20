@@ -74,26 +74,25 @@
       <!-- 条件选择框 -->
       <div class="query">
         <span>翻译成的语言：</span>
-        <select>
+        <select v-model="transLang">
           <option value="italy">意大利</option>
           <option value="english">英语</option>
           <option value="german">德语</option>
         </select>
       </div>
-
       <!-- 翻译框 -->
       <div class="box">
         <div class="input-wrap">
-          <textarea v-model="words"></textarea>
+          <textarea v-model="obj.words"></textarea>
           <span><i>⌨️</i>文档翻译</span>
         </div>
         <div class="output-wrap">
-          <div class="transbox">mela</div>
+          <div class="transbox">{{ transWords }}</div>
         </div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       // 接口地址：https://applet-base-api-t.itheima.net/api/translate
       // 请求方式：get
@@ -101,14 +100,53 @@
       // （1）words：需要被翻译的文本（必传）
       // （2）lang： 需要被翻译成的语言（可选）默认值-意大利
       // -----------------------------------------------
-      
       const app = new Vue({
-        el: '#app',
+        el: "#app",
         data: {
-          words: ''
+          transLang: "italy",
+          // words: "",
+          // 例如 还有一级目录
+          obj: {
+            test1: "",
+            test2: "",
+            words: "",
+          },
+          transWords: "",
         },
         // 具体讲解：(1) watch语法 (2) 具体业务实现
-      })
+        // 在这只能监听到同一级的数据
+        watch: {
+          // 该方法会在数据变化时候调用
+          // newValue变化后的值   oldValue老值(一般不用)
+          // words(newValue,oldValue){}   监听words的改变
+          words(newValue) {
+            console.log(newValue);
+          },
+          // 如果我需要监视data的下一级的数据(子属性)访问路径
+          // 一开始 async 在没加延时的时候,是在最前面的
+          "obj.words"(newValue) {
+            // 防抖: 延迟执行(如果不加延时,那么每次输入一个,他都会进行请求,对后台服务器不友好)
+            // 如果有动作(输入) 那么清空之前的延时,如果设置的时间内没有变化请求,则会执行下面的方法
+            clearTimeout(this.timer)
+            // 设置延时器,如果不设置,那么则会延时后,之前的请求都会执行
+            // this.timer不需要写到data里,直接写在这,相当于挂载对象,跟页面渲染无关的,直接在对象上面进行绑定
+            this.timer = setTimeout(async () => {
+              const res = await axios({
+                // 翻译url
+                url: "https://applet-base-api-t.itheima.net/api/translate",
+                params: {
+                  words: newValue,
+                },
+              });
+              if (res.data.data !== null) {
+                this.transWords = res.data.data;
+              } else {
+                this.transWords = "";
+              }
+            }, 1000); // 设置延时
+          },
+        },
+      });
     </script>
   </body>
 </html>

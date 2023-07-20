@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-
-  <div id="app">
-    姓：<input type="text"><br>
-    名：<input type="text"><br>
-    <p>姓名：</p>
-    <button>修改姓名</button>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
-  <script>
-    const app = new Vue({
-      el: '#app',
-      data: {
-
-      },
-      computed: {
-
-      },
-      methods: {
-
-      }
-    })
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      姓：<input type="text" v-model="firstName" /><br />
+      名：<input type="text" v-model="lastName" /><br />
+      <p>姓名：{{ username }}</p>
+      <button @click="changeName">修改姓名</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          firstName: "",
+          lastName: "",
+        },
+        computed: {
+          // username的获取跟设置逻辑(完整的写法 get 和 set)
+          // 当这个属性被修改时,他会调用set方法
+          username: {
+            // 获取逻辑
+            get() {
+              return this.firstName + this.lastName;
+            },
+            // 设置逻辑
+            set(value) {
+              // 更新
+              this.firstName = value.slice(0, 1); //截取第一个
+              this.lastName = value.slice(1); //截取一以后的
+            },
+          },
+        },
+        methods: {
+          changeName() {
+            this.username = "姓名";
+          },
+        },
+      });
+    </script>
+  </body>
 </html>
