@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <h3>@keyup.enter → 监听键盘回车事件</h3>
+      <input v-model="username" @keyup.enter="print" type="text" />
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          username: "",
+        },
+        methods: {
+          // 可以拿到事件对象
+          print(e) {
+            // console.log(e);
+            // if (e.key === "Enter") {
+            //   console.log(this.username);
+            // }
+            // 前面已经修饰了
+            console.log(this.username);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

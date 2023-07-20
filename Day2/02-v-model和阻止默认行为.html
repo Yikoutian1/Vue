@@ -22,19 +22,22 @@
 <body>
   <div id="app">
     <h3>v-model修饰符 .trim .number</h3>
-    姓名：<input v-model="username" type="text"><br>
-    年纪：<input v-model="age" type="text"><br>
+    <!-- v-model:  trim:去空格 number: 转数字 -->
+    姓名：<input v-model.trim="username" type="text"><br>
+    年纪：<input v-model.number="age" type="text"><br>
 
     
     <h3>@事件名.stop     →  阻止冒泡</h3>
-    <div @click="fatherFn" class="father">
-      <div @click="sonFn" class="son">儿子</div>
+    <!-- @事件名.stop  →  阻止冒泡 -->
+    <div @click.stop="fatherFn" class="father">
+      <div @click.stop="sonFn" class="son">儿子</div>
     </div>
 
     <h3>@事件名.prevent  →  阻止默认行为</h3>
-    <a @click href="http://www.baidu.com">阻止默认行为</a>
+    <!-- @事件名.prevent  →  阻止默认行为 -->
+    <a @click.prevent href="http://www.baidu.com">阻止默认行为</a>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
   <script>
     const app = new Vue({
       el: '#app',
@@ -47,7 +50,7 @@
           alert('老父亲被点击了')
         },
         sonFn (e) {
-          // e.stopPropagation()
+          // e.stopPropagation() -> 老写法
           alert('儿子被点击了')
         }
       }
