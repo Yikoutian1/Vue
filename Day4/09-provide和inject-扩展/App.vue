@@ -15,7 +15,7 @@ export default {
     return {
       // 简单类型 是非响应式的
       color: this.color,
-      // 复杂类型 是响应式的
+      // 复杂类型 是响应式的  推荐
       userInfo: this.userInfo,
     }
   },

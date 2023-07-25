@@ -1,24 +1,21 @@
 <template>
   <div class="app">
-    <BaseA></BaseA>
-    <BaseB></BaseB>
-    <BaseC></BaseC>
+    <BaseSelect v-model="selectId"></BaseSelect>
   </div>
 </template>
 
 <script>
-import BaseA from './components/BaseA.vue'
-import BaseB from './components/BaseB.vue'
-import BaseC from './components/BaseC.vue'
+import BaseSelect from "./components/BaseSelect.vue";
 export default {
-  components:{
-    BaseA,
-    BaseB,
-    BaseC
-  }
-}
+  data() {
+    return {
+      selectId: "102",
+    };
+  },
+  components: {
+    BaseSelect,
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

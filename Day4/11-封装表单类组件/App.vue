@@ -1,6 +1,9 @@
 <template>
   <div class="app">
-    <BaseSelect></BaseSelect>
+    <BaseSelect
+    :cityId = "selectId"
+    @change="handleChange"
+    ></BaseSelect>
   </div>
 </template>
 

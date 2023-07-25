@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- 父传子 数据渲染 -->
-    <select :value="cityId" @change="handleChange">
+    <select :value="value" @change="handleChange">
       <option value="101">北京</option>
       <option value="102">上海</option>
       <option value="103">武汉</option>
@@ -13,21 +12,17 @@
 
 <script>
 export default {
-  data() {
-    return {
-      selectId: "",
-    };
-  },
   props: {
-    // 传输数据
-    cityId: String,
+    value: String
   },
-  methods: {
-    handleChange(e) {
-      this.$emit("change",e.target.value)
-    },
-  },
-};
+  methods:{
+    handleChange(e){
+      // 在子组件中,value接收,监听input事件
+      this.$emit('input',e.target.value)
+    }
+  }
+}
 </script>
 
-<style></style>
+<style>
+</style>
