@@ -1,6 +1,9 @@
 <template>
   <div class="app">
-    <BaseCount></BaseCount>
+    <BaseCount
+    :count="count"
+    @changeCount = "handleChange"
+    ></BaseCount>
   </div>
 </template>
 
@@ -12,11 +15,13 @@ export default {
   },
   data(){
     return {
-      count:100
+      count:666
     }
   },
   methods:{
-    
+    handleChange(newCount){
+      this.count = newCount
+    }
   }
 }
 </script>

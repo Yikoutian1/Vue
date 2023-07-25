@@ -8,12 +8,31 @@
 
 <script>
 export default {
-  props: ["w"],
+  // props: ["w"],
 
-
-  // 1.基础写法（类型校验）
+  // 1.基础写法（类型校验）对象的写法   !!最常用的!!
+  // props: {
+  //   w: Number // Number String Boolean ...类型约束
+  // }
   // 2.完整写法（类型、是否必填、默认值、自定义校验）
-}
+  props: {
+    w: {
+      // 属性
+      type: Number, // 需求属性
+      required: true, // 必须true
+      default: 0, // 默认设置值
+      validator(value) {
+        // 自定义校验逻辑
+        if (value >= 0 && value <= 100) {
+          return true;
+        } else {
+          console.log("传入的prop w,必须在0-100的范围内");
+          return false;
+        }
+      },
+    },
+  },
+};
 </script>
 
 <style scoped>

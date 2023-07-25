@@ -1,22 +1,33 @@
 <template>
   <div class="base-count">
-    <button @click="count--">-</button>
+    <button @click="handleSub">-</button>
     <span>{{ count }}</span>
-    <button @click="count++">+</button>
+    <button @click="handleAdd">+</button>
   </div>
 </template>
 
 <script>
 export default {
   // 1.自己的数据随便修改  （谁的数据 谁负责）
-  data () {
+  data() {
     return {
-      count: 100,
-    }
+      //count: 100,
+    };
   },
   // 2.外部传过来的数据 不能随便修改
- 
-}
+  props: {
+    count: Number,
+  },
+  methods: {
+    handleAdd() {
+      // 通知到父组件
+      this.$emit("changeCount", this.count + 1);
+    },
+    handleSub() {
+      this.$emit("changeCount", this.count - 1);
+    },
+  },
+};
 </script>
 
 <style>
