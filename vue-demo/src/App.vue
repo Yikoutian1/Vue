@@ -1,21 +1,24 @@
 <template>
   <div class="app">
-    <BaseSelect v-model="selectId"></BaseSelect>
+    <!-- <div class="base-chart-box">
+      这是一个捣乱的盒子
+    </div> -->
+    <BaseChart></BaseChart>
   </div>
 </template>
 
 <script>
-import BaseSelect from "./components/BaseSelect.vue";
+import BaseChart from './components/BaseChart.vue'
 export default {
-  data() {
-    return {
-      selectId: "102",
-    };
-  },
-  components: {
-    BaseSelect,
-  },
-};
+  components:{
+    BaseChart
+  }
+}
 </script>
 
-<style></style>
+<style>
+.base-chart-box {
+  width: 200px;
+  height: 100px;
+}
+</style>
