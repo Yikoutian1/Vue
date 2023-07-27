@@ -1,8 +1,13 @@
 <template>
   <div class="app">
-    <!-- <div class="base-chart-box">
+    <!-- 
+      如果使用的是document.querySelector的话,
+      这个class与子类同名,
+      则会选择第一个匹配的 
+    -->
+    <div class="base-chart-box">
       这是一个捣乱的盒子
-    </div> -->
+    </div>
     <BaseChart></BaseChart>
   </div>
 </template>

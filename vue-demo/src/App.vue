@@ -1,24 +1,39 @@
 <template>
   <div class="app">
-    <!-- <div class="base-chart-box">
-      这是一个捣乱的盒子
-    </div> -->
-    <BaseChart></BaseChart>
+    <div v-if="isShowEdit">
+      <input ref="inpt" type="text" v-model="editValue"/>
+      <button>确认</button>
+    </div>
+    <div v-else>
+      <span>{{ title }}</span>
+      <button @click="handleEdit">编辑</button>
+    </div>
   </div>
 </template>
 
 <script>
-import BaseChart from './components/BaseChart.vue'
 export default {
-  components:{
-    BaseChart
-  }
-}
+  data() {
+    return {
+      title: "大标题",
+      isShowEdit: false,
+      editValue: "",
+    };
+  },
+  methods: {
+    /**
+     * 想要在DOM跟新完成在做某事,用$nextTick
+     */
+    handleEdit() {
+      // 显示输入框
+      this.isShowEdit = true;
+      // 让输入框获取焦点($nextTick等dom更新完,立刻执行下面语句)
+      this.$nextTick(() => {
+        this.$refs.inpt.focus();
+      });
+    },
+  },
+};
 </script>
 
-<style>
-.base-chart-box {
-  width: 200px;
-  height: 100px;
-}
-</style>
+<style></style>
