@@ -1,29 +1,24 @@
 <template>
   <div class="dialog">
     <div class="dialog-header">
-      <h3>友情提示</h3>
-      <span class="close">✖️</span>
+      <slot name="head"></slot>
     </div>
 
     <div class="dialog-content">
-      <!-- 预先在slot里面写入内容,假如没有传入值,那么就显示这个默认的 -->
-      <!-- 前台传入了值,那么这个默认的值就会被替换 -->
-      <slot>我是后备内容,默认显示的值,外部没传值进来</slot>
+      <slot name="content"></slot>
     </div>
     <div class="dialog-footer">
-      <button>取消</button>
-      <button>确认</button>
+      <!-- <button>按钮</button> -->
+      <slot name="footer"></slot>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-
-    }
-  }
+  data() {
+    return {}
+  },
 }
 </script>
 
