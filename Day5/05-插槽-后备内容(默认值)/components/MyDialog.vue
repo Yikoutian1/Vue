@@ -6,7 +6,9 @@
     </div>
 
     <div class="dialog-content">
-      <slot></slot>
+      <!-- 预先在slot里面写入内容,假如没有传入值,那么就显示这个默认的 -->
+      <!-- 前台传入了值,那么这个默认的值就会被替换 -->
+      <slot>我是后备内容,默认显示的值,外部没传值进来</slot>
     </div>
     <div class="dialog-footer">
       <button>取消</button>

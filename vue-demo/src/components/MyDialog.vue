@@ -1,10 +1,4 @@
 <template>
-  <!-- 
-    插槽的基本语法
-    1.组件需要定制的结构部分，改用<slot></slot>占位
-    2.使用组件时,在自定义标签内部 传入结构替换slot
-      自定义标签:<MyDialog>(替换的内容)</MyDialog>
-   -->
   <div class="dialog">
     <div class="dialog-header">
       <h3>友情提示</h3>
@@ -12,7 +6,9 @@
     </div>
 
     <div class="dialog-content">
-      <slot></slot>
+      <!-- 预先在slot里面写入内容,假如没有传入值,那么就显示这个默认的 -->
+      <!-- 前台传入了值,那么这个默认的值就会被替换 -->
+      <slot>我是后备内容,默认显示的值,外部没传值进来</slot>
     </div>
     <div class="dialog-footer">
       <button>取消</button>
