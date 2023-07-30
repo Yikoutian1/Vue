@@ -47,11 +47,12 @@ export default {
   },
   directives:{
     loading:{
-      // 控制初始状态（后续视图更新不会执行）
+      // 控制初始状态（后续视图更新不会执行）默认状态
       inserted(el,binding){
         // binding.value：现在的值（isLoading），如果是true那么添加loading，否则移除
         binding.value ? el.classList.add('loading') : el.classList.remove('loading')
       },
+      // 更新视图时执行
       update(el,binding){
         binding.value ? el.classList.add('loading') : el.classList.remove('loading')
       }

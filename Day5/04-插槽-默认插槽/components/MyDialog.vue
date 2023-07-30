@@ -1,4 +1,10 @@
 <template>
+  <!-- 
+    插槽的基本语法
+    1.组件需要定制的结构部分，改用<slot></slot>占位
+    2.使用组件时,在自定义标签内部 传入结构替换slot
+      自定义标签:<MyDialog>(替换的内容)</MyDialog>
+   -->
   <div class="dialog">
     <div class="dialog-header">
       <h3>友情提示</h3>
@@ -6,7 +12,7 @@
     </div>
 
     <div class="dialog-content">
-      你确认要退出本系统么?
+      <slot></slot>
     </div>
     <div class="dialog-footer">
       <button>取消</button>
