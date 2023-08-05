@@ -9,28 +9,25 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>小张</td>
-        <td>8</td>
+      <tr v-for="(item,index) in data" :key="item.id">
+        <td>{{ index+1 }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.age }}</td>
         <td>
-          <button>删除</button>
-        </td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>小张</td>
-        <td>8</td>
-        <td>
-          <button>删除</button>
-        </td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>小张</td>
-        <td>8</td>
-        <td>
-          <button>删除</button>
+          <!-- 给slot标签添加返回元素 -->
+          <!-- 这个row是自己命名需要返回的名字 -->
+          <slot :row="item" msg="测试文本"></slot>
+          <!-- 
+            内部会将所有的属性添加到对象内
+            {
+              row:{
+                id: 2,
+                name: 'name',
+                age:19
+              },
+              msg:'测试文本'
+            }
+          -->
         </td>
       </tr>
     </tbody>
@@ -39,10 +36,11 @@
 
 <script>
 export default {
+  // 接收父组件传过来的数组
   props: {
     data: Array,
   },
-}
+};
 </script>
 
 <style scoped>
