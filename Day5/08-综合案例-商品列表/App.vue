@@ -53,8 +53,8 @@
 //    (1) 表头支持自定义
 //    (2) 主体支持自定义
 
-import MyTag from './components/MyTag.vue'
-import MyTable from './components/MyTable.vue'
+import MyTag from '../components/MyTag.vue'
+import MyTable from '../components/MyTable.vue'
 export default {
   name: 'TableCase',
   components: {

@@ -1,16 +1,16 @@
 <template>
-  <div class="base-dialog-wrap">
+  <div v-show="visible" class="base-dialog-wrap">
     <div class="base-dialog">
       <div class="title">
         <h3>温馨提示：</h3>
-        <button class="close">x</button>
+        <button @click="changVisible" class="close">x</button>
       </div>
       <div class="content">
         <p>你确认要退出本系统么？</p>
       </div>
       <div class="footer">
-        <button>确认</button>
-        <button>取消</button>
+        <button @click="changVisible">确认</button>
+        <button @click="changVisible">取消</button>
       </div>
     </div>
   </div>
@@ -18,7 +18,16 @@
 
 <script>
 export default {
-
+  // 接收
+  props:{
+    visible: Boolean
+  },
+  methods:{
+    changVisible(){
+      // this.$emit("update:传过来是谁就写谁",true)
+      this.$emit("update:visible",false)
+    }
+  }
 }
 </script>
 

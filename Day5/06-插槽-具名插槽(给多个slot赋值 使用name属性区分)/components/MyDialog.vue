@@ -1,14 +1,15 @@
 <template>
   <div class="dialog">
     <div class="dialog-header">
-      标题
+      <slot name="head"></slot>
     </div>
 
     <div class="dialog-content">
-      <slot></slot>
+      <slot name="content"></slot>
     </div>
     <div class="dialog-footer">
-      <button>按钮</button>
+      <!-- <button>按钮</button> -->
+      <slot name="footer"></slot>
     </div>
   </div>
 </template>

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Son from "./components/Son.vue";
+import Son from "./components/Son";
 export default {
   name: "App",
   components: {

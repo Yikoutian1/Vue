@@ -23,6 +23,7 @@
 <script>
 export default {
   props: {
+    // v-model接收 需要用value
     value: String
   },
   data () {
